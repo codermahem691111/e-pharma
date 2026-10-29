@@ -1,0 +1,252 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Smart Pharma – light, clean, clinical theme
+   Palette: slate neutrals + teal primary, soft sky / emerald accents
+------------------------------------------------------------------- */
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-slate-700 bg-slate-50;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(60rem 26rem at 10% -10%, rgb(204 251 241 / 0.75), transparent 60%),
+      radial-gradient(46rem 22rem at 100% 0%, rgb(224 242 254 / 0.85), transparent 55%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: #99f6e4;
+    color: #134e4a;
+  }
+}
+
+@layer components {
+  /* ---------- Header / navigation ---------- */
+  .app-header {
+    @apply sticky top-0 z-30 border-b border-slate-200/70 bg-white/80 backdrop-blur-md;
+  }
+  .brand {
+    @apply flex items-center gap-3 shrink-0;
+  }
+  .brand-mark {
+    @apply grid h-10 w-10 place-items-center rounded-xl text-lg text-white;
+    background: linear-gradient(135deg, #14b8a6, #0d9488 55%, #0f766e);
+    box-shadow: 0 6px 14px -4px rgb(13 148 136 / 0.55);
+  }
+  .brand-name {
+    @apply text-base font-semibold leading-tight tracking-tight text-slate-900;
+  }
+  .brand-tag {
+    @apply text-[11px] leading-tight text-slate-500;
+  }
+  .nav-link {
+    @apply whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors
+      hover:bg-slate-100 hover:text-slate-900;
+  }
+  .nav-link-active {
+    @apply bg-teal-50 text-teal-700 hover:bg-teal-50 hover:text-teal-700;
+  }
+
+  /* ---------- Home ---------- */
+  .home-hero {
+    @apply mb-10 text-center;
+  }
+  .home-eyebrow {
+    @apply mb-3 inline-flex items-center gap-2 rounded-full border border-teal-100 bg-teal-50 px-3 py-1
+      text-xs font-semibold uppercase tracking-wider text-teal-700;
+  }
+  .home-heading {
+    @apply text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl;
+  }
+  .home-sub {
+    @apply mx-auto mt-3 max-w-xl text-slate-500;
+  }
+  .home-card {
+    @apply relative flex items-center gap-4 rounded-2xl border border-slate-200/80 bg-white p-5
+      transition duration-200 hover:-translate-y-0.5 hover:border-teal-200;
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 10px 24px -14px rgb(15 23 42 / 0.12);
+  }
+  .home-card:hover {
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 18px 34px -14px rgb(13 148 136 / 0.28);
+  }
+  .home-icon {
+    @apply grid h-14 w-14 shrink-0 place-items-center rounded-xl text-2xl;
+  }
+  .home-title {
+    @apply text-base font-semibold text-slate-900;
+  }
+  .home-desc {
+    @apply mt-0.5 text-sm text-slate-500;
+  }
+  .home-arrow {
+    @apply ml-auto text-sm text-slate-300 transition duration-200 group-hover:translate-x-0.5 group-hover:text-teal-600;
+  }
+
+  /* ---------- Surfaces ---------- */
+  .panel {
+    @apply mx-auto w-full rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8;
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 14px 34px -18px rgb(15 23 42 / 0.16);
+  }
+  .panel-scroll {
+    @apply overflow-x-auto;
+  }
+  .panel-flush {
+    @apply overflow-hidden rounded-2xl border border-slate-200/80 bg-white;
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 14px 34px -18px rgb(15 23 42 / 0.16);
+  }
+  .stat-card {
+    @apply rounded-2xl border border-slate-200/80 bg-white p-5;
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 10px 24px -16px rgb(15 23 42 / 0.16);
+  }
+  .stat-tile {
+    @apply rounded-2xl border p-5 text-center;
+  }
+  .stat-label {
+    @apply text-xs font-semibold uppercase tracking-wider;
+  }
+  .stat-value {
+    @apply mt-1.5 text-3xl font-semibold tracking-tight;
+  }
+  .page-wrap {
+    @apply py-1;
+  }
+
+  /* ---------- Typography ---------- */
+  .page-title {
+    @apply mb-5 text-2xl font-semibold tracking-tight text-slate-900;
+  }
+  .form-title {
+    @apply mb-6 text-center text-2xl font-semibold tracking-tight text-slate-900;
+  }
+  .section-title {
+    @apply text-lg font-semibold tracking-tight text-slate-900;
+  }
+  .page-sub {
+    @apply text-slate-500;
+  }
+
+  /* ---------- Forms ---------- */
+  .field-label {
+    @apply mb-1.5 block text-sm font-medium text-slate-600;
+  }
+  .field-input {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm
+      transition placeholder:text-slate-400;
+  }
+  .field-input:hover {
+    @apply border-slate-300;
+  }
+  .field-input:focus {
+    @apply outline-none border-teal-500;
+    box-shadow: 0 0 0 4px rgb(20 184 166 / 0.15);
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn-primary,
+  .btn-success,
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold
+      transition duration-150 active:translate-y-px focus:outline-none focus-visible:ring-4
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-teal-600 text-white hover:bg-teal-700 focus-visible:ring-teal-500/25;
+    box-shadow: 0 6px 14px -6px rgb(13 148 136 / 0.6);
+  }
+  .btn-success {
+    @apply bg-emerald-600 text-white hover:bg-emerald-700 focus-visible:ring-emerald-500/25;
+    box-shadow: 0 6px 14px -6px rgb(5 150 105 / 0.6);
+  }
+  .btn-secondary {
+    @apply border border-teal-200 bg-white text-teal-700 hover:bg-teal-50 focus-visible:ring-teal-500/20;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+  .link-danger {
+    @apply rounded-lg px-2.5 py-1 text-sm font-medium text-rose-600 transition-colors hover:bg-rose-50 hover:text-rose-700;
+  }
+
+  /* ---------- Dropdown (category picker) ---------- */
+  .dropdown-panel {
+    @apply absolute z-20 mt-2 max-h-64 w-full overflow-y-auto rounded-xl border border-slate-200 bg-white p-1.5;
+    box-shadow: 0 18px 40px -12px rgb(15 23 42 / 0.25);
+  }
+  .dropdown-group {
+    @apply px-2 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400;
+  }
+  .dropdown-option {
+    @apply cursor-pointer rounded-lg px-2.5 py-1.5 text-sm text-slate-700 transition-colors hover:bg-teal-50 hover:text-teal-800;
+  }
+  .dropdown-option-active {
+    @apply bg-teal-50 font-semibold text-teal-800;
+  }
+
+  /* ---------- Tables ---------- */
+  .data-table {
+    @apply w-full border-collapse text-sm;
+  }
+  .data-table thead th {
+    @apply whitespace-nowrap border-b border-slate-200 bg-slate-50 px-4 py-3 text-left text-xs font-semibold
+      uppercase tracking-wider text-slate-500;
+  }
+  .data-table tbody td {
+    @apply border-b border-slate-100 px-4 py-3.5 align-middle text-slate-700;
+  }
+  .data-table tbody tr {
+    @apply transition-colors;
+  }
+  .data-table tbody tr:hover td {
+    @apply bg-teal-50/40;
+  }
+  .data-table tbody tr:last-child td {
+    @apply border-b-0;
+  }
+
+  /* ---------- Badges, alerts, states ---------- */
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .badge-sky {
+    @apply bg-sky-50 text-sky-700 ring-1 ring-inset ring-sky-100;
+  }
+  .badge-pink {
+    @apply bg-pink-50 text-pink-700 ring-1 ring-inset ring-pink-100;
+  }
+  .badge-rose {
+    @apply bg-rose-50 text-rose-700 ring-1 ring-inset ring-rose-100;
+  }
+  .badge-amber {
+    @apply bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-100;
+  }
+  .alert-error {
+    @apply rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700;
+  }
+  .alert-success {
+    @apply rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700;
+  }
+  .empty-cell {
+    @apply py-10 text-center text-slate-500;
+  }
+  .empty-state {
+    @apply rounded-xl border border-dashed border-slate-200 bg-slate-50/60 py-10 text-center text-slate-500;
+  }
+  .loading-state {
+    @apply py-16 text-center text-slate-500;
+  }
+  .bill-total {
+    @apply mb-4 text-right text-lg font-semibold text-slate-900;
+  }
+}
